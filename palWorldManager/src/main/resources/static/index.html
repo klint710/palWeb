@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>header</title>
+
+</head>
+
+<body>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="manager.js"></script>
+<!--	<div>-->
+<!--		<form id="login">-->
+<!--			<label for="password">請輸入密碼</label>-->
+<!--			<input id="password" name="password" type="text">-->
+<!--			<input id="send" type="button" value="送出" onclick="login()">-->
+<!--		</form>-->
+<!--		<form id="manager">-->
+<!--			<h3>server開關</h3>-->
+<!--			<input id="run" type="button" value="開啟server" onclick="start()" />-->
+<!--			<input id="stop" type="button" value="停止server" onclick="shutdown()" />-->
+<!--			<input id="version" type="button" value="更新版本" onclick="updateVersion()" />-->
+<!--		</form>-->
+
+<!--	</div>-->
+<!--	<br>-->
+<!--	<div>-->
+<!--		<input id="getPlayer" type="button" value="更新伺服器狀態&取得線上人員" onclick="init()" />-->
+<!--		<span id="serverStatus"></span>-->
+<!--	</div>-->
+<!--	<br>-->
+<!--	<div id="players">-->
+<!--	</div>-->
+
+<!--	<br>-->
+<!--	<div>-->
+<!--		<input id="getFile" type="button" value="取得還原檔案清單" onclick="getFileList()" />-->
+<!--		<br>-->
+<!--		<select id="fileList"></select>-->
+<!--	</div>-->
+	<div>
+		<input id="downloadLogBtn" type="button" value="下載log檔" onclick="downloadLogFile()" />
+		<br>
+		<select id="logFileList">
+			<option label="javaLog" value="javaLog.log">
+			<option label="帕魯Log" value="logfile.log">
+			<option label="更新版本Log" value="update.log">
+			<option label="備份Log" value="deleteBackup.log">
+		</select>
+	</div>
+</body>
+
+</html>
