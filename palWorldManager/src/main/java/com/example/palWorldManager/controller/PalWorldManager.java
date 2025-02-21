@@ -34,6 +34,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.palWorldManager.model.QryLogData;
+
 import com.google.gson.Gson;
 
 @RequestMapping("/manager")
@@ -315,11 +317,10 @@ public class PalWorldManager {
 	}
 
 	@RequestMapping("/downloadLog")
-	public ResponseEntity<InputStreamResource> downLoadLog(@RequestBody Map<String, String> params) {
+	public ResponseEntity<InputStreamResource> downLoadLog(@RequestBody QryLogData params) {
 		try {
-//			String logName = params.get("logName");
-//			File file = new File($HOME + "/palData/log/" + logName);
-			File file = new File("D:\\test.txt");
+			String fileName = params.getFileName();
+			File file = new File($HOME + "/palData/log/" + fileName);
 			if (!file.exists()) {
 				return ResponseEntity.notFound().build();
 			}
@@ -340,30 +341,29 @@ public class PalWorldManager {
 		}
 	}
 	
-	@RequestMapping("/test")
-	public ResponseEntity<InputStreamResource> test() {
-		try {
-//			String logName = params.get("logName");
-//			File file = new File($HOME + "/palData/log/" + logName);
-			File file = new File("D:\\test.txt");
-			if (!file.exists()) {
-				return ResponseEntity.notFound().build();
-			}
-
-			InputStream is = new FileInputStream(file);
-			BufferedInputStream bis = new BufferedInputStream(is);
-
-			// 使用 InputStreamResource 包裝 BufferedInputStream
-			InputStreamResource resource = new InputStreamResource(bis);
-
-			return ResponseEntity.ok()
-					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
-					.contentType(MediaType.APPLICATION_OCTET_STREAM).contentLength(file.length()).body(resource);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			return ResponseEntity.notFound().build();
-		}
-	}
-
+//	@RequestMapping("/test")
+//	public ResponseEntity<InputStreamResource> test(@RequestBody QryLogData params) {
+//		try {
+//			String fileName = params.getFileName();
+//			File file = new File($HOME + "/palData/log/" + fileName);
+//			if (!file.exists()) {
+//				return ResponseEntity.notFound().build();
+//			}
+//
+//			InputStream is = new FileInputStream(file);
+//			BufferedInputStream bis = new BufferedInputStream(is);
+//
+//			// 使用 InputStreamResource 包裝 BufferedInputStream
+//			InputStreamResource resource = new InputStreamResource(bis);
+//
+//			return ResponseEntity.ok()
+//					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getName() + "\"")
+//					.contentType(MediaType.APPLICATION_OCTET_STREAM).contentLength(file.length()).body(resource);
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			return ResponseEntity.notFound().build();
+//		}
+//	}
+	
 }
